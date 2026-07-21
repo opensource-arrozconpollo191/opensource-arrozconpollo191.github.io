@@ -3,9 +3,9 @@ import test from "node:test";
 
 const routes = [
   ["/", "Edinburgh Private Hire &amp; Bespoke Tours", "Private hire across"],
-  ["/private-hire", "Private Hire in Edinburgh and Beyond", "From city streets"],
-  ["/airport-transfers", "Edinburgh Airport Transfers", "A clearer start"],
-  ["/tours", "Bespoke Tours from Edinburgh", "See more"],
+  ["/private-hire", "Private Hire in Edinburgh and Beyond", "Private hire in Edinburgh"],
+  ["/airport-transfers", "Edinburgh Airport Transfers", "Edinburgh Airport pickups"],
+  ["/tours", "Bespoke Tours from Edinburgh", "Private tours from Edinburgh"],
   ["/contact", "Contact Stevie Craig", "Book by WhatsApp"],
 ];
 

@@ -15,8 +15,8 @@ export default function PrivateHirePage() {
     <>
       <PageHero
         eyebrow="Edinburgh private hire"
-        title={<>From city streets to journeys beyond.</>}
-        intro="Pre-arranged private hire based in Edinburgh, with the practical details agreed directly with Stevie before you travel."
+        title={<>Private hire in Edinburgh and beyond.</>}
+        intro="Book local journeys, hotel and station pickups, airport runs and longer trips by WhatsApp."
         image="/images/edinburgh-street.webp"
         imageAlt="People walking along a historic Edinburgh street"
         kind="privateHire"
@@ -25,20 +25,18 @@ export default function PrivateHirePage() {
 
       <section className="editorial-section page-width">
         <div className="editorial-section__aside">
-          <p className="eyebrow">The service</p>
-          <p className="section-number">01</p>
+          <p className="eyebrow">Private hire</p>
         </div>
         <div className="editorial-section__content">
-          <h2>A journey planned around where you need to be.</h2>
+          <h2>Local trips and longer journeys.</h2>
           <div className="two-column-copy">
             <p className="lead">
-              Arrange a pickup within Edinburgh, a destination elsewhere in
-              the city, or a longer journey beyond it.
+              Book a pickup within Edinburgh or a longer journey beyond the
+              city.
             </p>
             <p>
-              Share the route and timing you have in mind. Stevie can then
-              discuss the details with you directly, including the pickup
-              point, number of passengers and anything relevant to the trip.
+              Send the pickup, destination, date, time and number of passengers
+              to check availability and get a quote.
             </p>
           </div>
         </div>
@@ -77,9 +75,9 @@ export default function PrivateHirePage() {
       </section>
 
       <FinalCta
-        eyebrow="Arrange private hire"
-        title="Start with your pickup and destination."
-        body="Send the route, preferred date and time, and passenger numbers. The journey can then be discussed directly with Stevie."
+        eyebrow="Private hire"
+        title="Book your journey"
+        body="Send the pickup, destination, date, time and passenger numbers on WhatsApp."
         kind="privateHire"
       />
     </>

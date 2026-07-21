@@ -42,9 +42,6 @@ export function WhatsAppLink({
       }
     >
       <span>{children}</span>
-      <span className="button__arrow" aria-hidden="true">
-        ↗
-      </span>
     </Link>
   );
 }
@@ -123,13 +120,7 @@ export function SiteFooter() {
       </div>
       <div className="site-footer__bottom page-width">
         <p>© {new Date().getFullYear()} {siteConfig.name}</p>
-        <details className="photo-credits">
-          <summary>Photography credits</summary>
-          <p>
-            Edinburgh photographs by Maxime Galliot, Mafalda Moura and Mike
-            Newbry, used under the Unsplash License.
-          </p>
-        </details>
+        <p>Edinburgh photography used under the Unsplash License.</p>
       </div>
     </footer>
   );

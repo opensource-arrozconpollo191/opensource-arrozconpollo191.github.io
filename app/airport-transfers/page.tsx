@@ -15,8 +15,8 @@ export default function AirportTransfersPage() {
     <>
       <PageHero
         eyebrow="Edinburgh Airport transfers"
-        title={<>A clearer start or finish to your journey.</>}
-        intro="Arrange an Edinburgh Airport pickup or drop-off in advance, with your route, timing and flight details agreed directly."
+        title={<>Edinburgh Airport pickups and drop-offs.</>}
+        intro="Book a transfer to or from Edinburgh Airport by WhatsApp."
         image="/images/edinburgh-skyline.webp"
         imageAlt="Edinburgh skyline seen across the city"
         kind="airport"
@@ -25,48 +25,31 @@ export default function AirportTransfersPage() {
 
       <section className="editorial-section page-width">
         <div className="editorial-section__aside">
-          <p className="eyebrow">Before you travel</p>
-          <p className="section-number">02</p>
+          <p className="eyebrow">Airport transfers</p>
         </div>
         <div className="editorial-section__content">
-          <h2>Airport details agreed before the day.</h2>
+          <h2>Book your airport transfer in advance.</h2>
           <div className="two-column-copy">
             <p className="lead">
-              Share whether you need an airport pickup or drop-off, along with
-              the date, time and address at the other end of the journey.
+              Send whether you need a pickup or drop-off, along with the date,
+              time and address at the other end.
             </p>
             <p>
               For an arrival, include the flight number and scheduled landing
-              time. Pickup details can then be confirmed directly with Stevie
-              rather than left unclear on the day.
+              time. Stevie will reply with availability and pickup details.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="timeline-section page-width">
-        <div>
-          <p className="eyebrow">Your message</p>
-          <h2>Include the essentials.</h2>
-        </div>
-        <ol>
-          <li>
-            <span>01</span>
-            <p>Pickup or drop-off</p>
-          </li>
-          <li>
-            <span>02</span>
-            <p>Date and preferred time</p>
-          </li>
-          <li>
-            <span>03</span>
-            <p>Flight number for arrivals</p>
-          </li>
-          <li>
-            <span>04</span>
-            <p>Passenger and luggage details</p>
-          </li>
-        </ol>
+      <section className="simple-points page-width">
+        <h2>What to send</h2>
+        <ul>
+          <li>Pickup or drop-off</li>
+          <li>Date and preferred time</li>
+          <li>Flight number for arrivals</li>
+          <li>Passenger and luggage details</li>
+        </ul>
       </section>
 
       <section className="related-link page-width">
@@ -77,9 +60,9 @@ export default function AirportTransfersPage() {
       </section>
 
       <FinalCta
-        eyebrow="Arrange an airport transfer"
-        title="Send the flight and journey details."
-        body="Tell Stevie whether you need a pickup or drop-off, then include your date, time, flight number, address and passenger numbers."
+        eyebrow="Airport transfers"
+        title="Book by WhatsApp"
+        body="Send your date, time, flight number, address and passenger numbers."
         kind="airport"
       />
     </>

@@ -43,25 +43,21 @@ export default function ContactPage() {
         </div>
 
         <div className="booking-checklist">
-          <p className="eyebrow">Include in your message</p>
-          <ol>
+          <h2>Include in your message</h2>
+          <ul>
             <li>
-              <span>01</span>
               <p>What you are arranging: private hire, an airport transfer or a tour</p>
             </li>
             <li>
-              <span>02</span>
               <p>Your pickup point and destination, or tour idea</p>
             </li>
             <li>
-              <span>03</span>
               <p>Your preferred date and time</p>
             </li>
             <li>
-              <span>04</span>
               <p>The number of passengers and relevant luggage details</p>
             </li>
-          </ol>
+          </ul>
         </div>
       </div>
     </section>
