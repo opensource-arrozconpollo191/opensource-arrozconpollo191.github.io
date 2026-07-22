@@ -37,8 +37,8 @@ jobs:
       - name: Build static site
         run: npm run build:pages
         env:
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: "https://shctransfers-toursedinburgh.com"
+          NEXT_PUBLIC_BASE_PATH: ""
           NEXT_PUBLIC_WHATSAPP_NUMBER: "447528862843"
 
       - name: Upload Pages artifact

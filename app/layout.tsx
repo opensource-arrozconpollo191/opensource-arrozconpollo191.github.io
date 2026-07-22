@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import {
+  MobileBookingBar,
+  SiteFooter,
+  SiteHeader,
+} from "@/components/site-shell";
 import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -11,6 +15,10 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.shortName }],
+  creator: siteConfig.shortName,
+  publisher: siteConfig.name,
+  category: "Private hire and tourism",
   icons: {
     icon: [{ url: siteUrl("/icon.svg"), type: "image/svg+xml" }],
     shortcut: [{ url: siteUrl("/icon.svg"), type: "image/svg+xml" }],
@@ -38,6 +46,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <MobileBookingBar />
       </body>
     </html>
   );

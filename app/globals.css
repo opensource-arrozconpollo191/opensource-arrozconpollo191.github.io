@@ -559,10 +559,43 @@ summary {
   line-height: 0.95;
 }
 
-.contact-page__intro > p:last-child {
+.contact-page__intro > h1 + p {
   max-width: 38rem;
   margin: 1.5rem 0 0;
   color: var(--muted);
+}
+
+.contact-page__direct {
+  max-width: 48rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem 2.5rem;
+  margin-top: 2rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--line);
+}
+
+.contact-page__direct a {
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.contact-page__direct a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.contact-page__direct span {
+  margin-bottom: 0.2rem;
+  color: #876b30;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .contact-page__grid {
@@ -631,8 +664,8 @@ summary {
 
 .site-footer__top {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 1fr) auto minmax(15rem, 20rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
   padding-block: 3.5rem;
 }
 
@@ -655,16 +688,29 @@ summary {
   text-transform: uppercase;
 }
 
-.footer-nav {
+.footer-nav,
+.footer-contact {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.footer-nav a {
+.footer-nav a,
+.footer-contact a {
   padding: 0.2rem 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.footer-nav a:hover,
+.footer-contact a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.footer-contact a {
+  overflow-wrap: anywhere;
 }
 
 .site-footer__bottom {
@@ -679,6 +725,10 @@ summary {
 
 .site-footer__bottom p {
   margin: 0;
+}
+
+.mobile-booking-bar {
+  display: none;
 }
 
 @media (max-width: 960px) {
@@ -783,7 +833,11 @@ summary {
   }
 
   .site-footer__top {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__top > div:first-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -794,6 +848,7 @@ summary {
 
   body {
     font-size: 15px;
+    padding-bottom: calc(4.35rem + env(safe-area-inset-bottom));
   }
 
   .site-header__inner {
@@ -915,9 +970,18 @@ summary {
     padding: 2.5rem 1.25rem;
   }
 
+  .contact-page__direct {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .site-footer__top {
     grid-template-columns: 1fr;
     gap: 2.25rem;
+  }
+
+  .site-footer__top > div:first-child {
+    grid-column: auto;
   }
 
   .site-footer__bottom {
@@ -925,6 +989,49 @@ summary {
     gap: 0.4rem;
   }
 
+  .mobile-booking-bar {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 0.55rem;
+    padding: 0.55rem max(0.7rem, env(safe-area-inset-right))
+      calc(0.55rem + env(safe-area-inset-bottom))
+      max(0.7rem, env(safe-area-inset-left));
+    background: rgba(250, 247, 240, 0.96);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -0.5rem 1.5rem rgba(7, 23, 36, 0.12);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-booking-bar a {
+    min-height: 3.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.8rem;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .mobile-booking-bar__call {
+    background: var(--navy);
+  }
+
+  .mobile-booking-bar__whatsapp {
+    background: var(--green);
+  }
+
+}
+
+@media print {
+  .mobile-booking-bar {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

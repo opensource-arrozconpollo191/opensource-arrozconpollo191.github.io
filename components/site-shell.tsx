@@ -1,10 +1,14 @@
+/* eslint-disable @next/next/no-img-element -- static export uses pre-generated responsive WebP variants. */
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
 import {
   type BookingKind,
+  emailHref,
   siteAsset,
   siteConfig,
+  siteImageSrcSet,
+  telephoneHref,
   whatsappHref,
 } from "@/lib/site";
 
@@ -15,6 +19,29 @@ const navigation = [
   { href: "/tours", label: "Bespoke Tours" },
   { href: "/contact", label: "Contact" },
 ];
+
+const responsiveImages: Partial<
+  Record<
+    `/images/${string}.webp`,
+    { widths: readonly number[]; width: number; height: number }
+  >
+> = {
+  "/images/edinburgh-skyline.webp": {
+    widths: [640, 1200, 2000],
+    width: 2000,
+    height: 2999,
+  },
+  "/images/edinburgh-landscape.webp": {
+    widths: [640, 1200, 1800],
+    width: 1800,
+    height: 1200,
+  },
+  "/images/edinburgh-street.webp": {
+    widths: [640, 1200, 1600],
+    width: 1600,
+    height: 2840,
+  },
+};
 
 type WhatsAppLinkProps = {
   kind?: BookingKind;
@@ -94,6 +121,14 @@ export function SiteFooter() {
             </Link>
           ))}
         </div>
+        <div className="footer-contact">
+          <p className="footer-label">Contact</p>
+          <a href={telephoneHref()}>Call {siteConfig.phoneDisplay}</a>
+          <a href={emailHref()}>{siteConfig.email}</a>
+          <a href={whatsappHref()} target="_blank" rel="noreferrer">
+            Message on WhatsApp
+          </a>
+        </div>
       </div>
       <div className="site-footer__bottom page-width">
         <p>© {new Date().getFullYear()} {siteConfig.name}</p>
@@ -103,11 +138,29 @@ export function SiteFooter() {
   );
 }
 
+export function MobileBookingBar() {
+  return (
+    <nav className="mobile-booking-bar" aria-label="Quick booking">
+      <a className="mobile-booking-bar__call" href={telephoneHref()}>
+        Call Stevie
+      </a>
+      <a
+        className="mobile-booking-bar__whatsapp"
+        href={whatsappHref()}
+        target="_blank"
+        rel="noreferrer"
+      >
+        WhatsApp
+      </a>
+    </nav>
+  );
+}
+
 type PageHeroProps = {
   eyebrow: string;
   title: ReactNode;
   intro: string;
-  image: `/${string}`;
+  image: `/images/${string}.webp`;
   imageAlt: string;
   kind?: BookingKind;
   imagePosition?: string;
@@ -122,6 +175,8 @@ export function PageHero({
   kind = "general",
   imagePosition,
 }: PageHeroProps) {
+  const imageData = responsiveImages[image];
+
   return (
     <section className="page-hero">
       <div className="page-hero__copy">
@@ -140,9 +195,13 @@ export function PageHero({
       <div className="page-hero__image">
         <img
           src={siteAsset(image)}
+          srcSet={
+            imageData ? siteImageSrcSet(image, imageData.widths) : undefined
+          }
+          sizes="(max-width: 960px) 100vw, 46vw"
           alt={imageAlt}
-          width="1600"
-          height="1100"
+          width={imageData?.width ?? 1600}
+          height={imageData?.height ?? 1100}
           style={imagePosition ? { objectPosition: imagePosition } : undefined}
         />
       </div>

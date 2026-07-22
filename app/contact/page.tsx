@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { WhatsAppLink } from "@/components/site-shell";
-import { pageMetadata, siteConfig } from "@/lib/site";
+import {
+  emailHref,
+  pageMetadata,
+  siteConfig,
+  telephoneHref,
+} from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Stevie Craig",
+  title: "Contact & Book",
   description:
-    "Message Stevie Craig directly on WhatsApp to discuss Edinburgh private hire, airport transfers, longer journeys or a bespoke tour.",
+    "Contact Stevie Craig by WhatsApp, phone or email about Edinburgh private hire, airport transfers, longer journeys or a bespoke tour.",
   path: "/contact",
 });
 
@@ -14,11 +19,24 @@ export default function ContactPage() {
     <section className="contact-page page-width">
       <div className="contact-page__intro">
         <p className="eyebrow">Contact me</p>
-        <h1>Book by WhatsApp.</h1>
+        <h1>Contact Stevie.</h1>
         <p>
-          Send the journey details to check availability, get a quote and book
-          with me.
+          WhatsApp is the quickest way to send journey details, check
+          availability and get a quote. You can also call or email me directly.
         </p>
+        <div
+          className="contact-page__direct"
+          aria-label="Direct contact details"
+        >
+          <a href={telephoneHref()}>
+            <span>Call</span>
+            {siteConfig.phoneDisplay}
+          </a>
+          <a href={emailHref()}>
+            <span>Email</span>
+            {siteConfig.email}
+          </a>
+        </div>
       </div>
 
       <div className="contact-page__grid">

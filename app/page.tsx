@@ -1,18 +1,21 @@
+/* eslint-disable @next/next/no-img-element -- static export uses pre-generated responsive WebP variants. */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { WhatsAppLink } from "@/components/site-shell";
 import {
   pageMetadata,
   siteAsset,
+  siteImageSrcSet,
   siteConfig,
   structuredData,
 } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Edinburgh Private Hire & Bespoke Tours",
+  title: "Edinburgh Private Hire & Airport Transfers | Stevie Craig",
   description:
     "Book Edinburgh private hire, airport transfers, longer journeys and bespoke tours with Stevie Craig by WhatsApp.",
   path: "/",
+  absoluteTitle: true,
 });
 
 const services = [
@@ -57,7 +60,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const schema = structuredData();
+  const schema = structuredData(faqs);
 
   return (
     <>
@@ -72,9 +75,13 @@ export default function Home() {
         <img
           className="home-hero__image"
           src={siteAsset("/images/edinburgh-skyline.webp")}
+          srcSet={siteImageSrcSet("/images/edinburgh-skyline.webp", [
+            640, 1200, 2000,
+          ])}
+          sizes="100vw"
           alt="Edinburgh skyline with the Balmoral clock tower and Edinburgh Castle"
           width="2000"
-          height="1328"
+          height="2999"
           fetchPriority="high"
         />
         <div className="home-hero__shade" />

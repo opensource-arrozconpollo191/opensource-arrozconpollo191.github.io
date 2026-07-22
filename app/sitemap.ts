@@ -1,15 +1,13 @@
 import type { MetadataRoute } from "next";
-import { siteConfig, siteUrl } from "@/lib/site";
+import { siteConfig, sitePageUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!siteConfig.launchReady) return [];
-
   return siteConfig.routes.map((route) => ({
-    url: siteUrl(route),
+    url: sitePageUrl(route),
     lastModified: new Date(),
-    changeFrequency: route === "/" ? "monthly" : "yearly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: route === "/" ? "weekly" : "monthly",
+    priority: route === "/" ? 1 : route === "/contact" ? 0.6 : 0.8,
   }));
 }

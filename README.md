@@ -9,14 +9,14 @@ npm install
 npm run dev
 ```
 
-## Launch configuration
+## Public configuration
 
-Copy `.env.example` to `.env` and set both values before creating a public build:
+The production domain and booking number are configured in the site and GitHub
+Pages workflow. Copy `.env.example` to `.env` only when you need to override
+them locally:
 
 - `NEXT_PUBLIC_SITE_URL`: final HTTPS custom domain without a trailing slash.
 - `NEXT_PUBLIC_WHATSAPP_NUMBER`: international WhatsApp number using digits only.
-
-Until both values are valid, the site remains in preview mode: search crawlers are blocked and WhatsApp buttons show the pending contact state.
 
 ## Validation
 
