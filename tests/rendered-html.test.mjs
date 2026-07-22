@@ -41,6 +41,18 @@ for (const [pathname, title, heading] of routes) {
     assert.match(html, new RegExp(heading, "i"));
     assert.match(html, /<meta name="robots" content="noindex, nofollow, noarchive"/i);
     assert.match(html, /Message me/i);
+    assert.match(html, /href="https:\/\/wa\.me\/447528862843\?text=/i);
+    const whatsappHref = html.match(
+      /href="(https:\/\/wa\.me\/447528862843\?text=[^"]+)"/i,
+    )?.[1];
+    assert.ok(whatsappHref);
+    assert.equal(
+      new URL(
+        whatsappHref.replaceAll("&amp;", "&").replaceAll("&#x27;", "'"),
+      ).searchParams.get("text"),
+      "Hi Stevie, I'd like to book a taxi:",
+    );
+    assert.doesNotMatch(html, /WhatsApp number pending/i);
     assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
   });
 }

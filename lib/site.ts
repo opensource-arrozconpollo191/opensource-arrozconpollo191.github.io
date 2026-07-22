@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 const configuredOrigin = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "";
-const configuredWhatsApp =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
+const configuredWhatsApp = (
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || "447528862843"
+).replace(/\D/g, "");
 
 const hasPublicOrigin = /^https:\/\/[a-z0-9.-]+$/i.test(configuredOrigin);
 const hasWhatsAppNumber = /^\d{8,15}$/.test(configuredWhatsApp);
@@ -24,14 +25,10 @@ export const siteConfig = {
   email: "",
   routes: ["/", "/private-hire", "/airport-transfers", "/tours", "/contact"],
   bookingMessages: {
-    general:
-      "Hello Stevie, I’d like to arrange a journey. My pickup point is: [pickup]. My destination is: [destination]. The date and time are: [date and time]. There will be [number] passengers.",
-    privateHire:
-      "Hello Stevie, I’d like to ask about private hire. My pickup point is: [pickup]. My destination is: [destination]. The date and time are: [date and time]. There will be [number] passengers.",
-    airport:
-      "Hello Stevie, I’d like to arrange an Edinburgh Airport transfer. This is a [pickup/drop-off]. The date and time are: [date and time]. My pickup or destination is: [location]. My flight number is: [flight number]. There will be [number] passengers.",
-    tour:
-      "Hello Stevie, I’d like to ask about a bespoke tour. My preferred date is: [date]. I’m interested in: [places or interests]. I’ll be starting from: [pickup]. There will be [number] passengers.",
+    general: "Hi Stevie, I'd like to book a taxi:",
+    privateHire: "Hi Stevie, I'd like to book a taxi:",
+    airport: "Hi Stevie, I'd like to book a taxi:",
+    tour: "Hi Stevie, I'd like to book a taxi:",
   },
 } as const;
 
