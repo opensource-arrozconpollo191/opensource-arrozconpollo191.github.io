@@ -1,11 +1,34 @@
 import type { Metadata } from "next";
 
-const configuredOrigin = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "";
+const configuredOrigin =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ?? "";
+const configuredBasePath =
+  process.env.NEXT_PUBLIC_BASE_PATH?.trim().replace(/\/+$/, "") ?? "";
 const configuredWhatsApp = (
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || "447528862843"
 ).replace(/\D/g, "");
 
-const hasPublicOrigin = /^https:\/\/[a-z0-9.-]+$/i.test(configuredOrigin);
+function isPublicSiteUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === "https:" &&
+      !url.username &&
+      !url.password &&
+      !url.search &&
+      !url.hash
+    );
+  } catch {
+    return false;
+  }
+}
+
+const hasPublicOrigin = isPublicSiteUrl(configuredOrigin);
+const basePath = /^\/(?:[a-z0-9._~-]+(?:\/[a-z0-9._~-]+)*)?$/i.test(
+  configuredBasePath,
+)
+  ? configuredBasePath
+  : "";
 const hasWhatsAppNumber = /^\d{8,15}$/.test(configuredWhatsApp);
 
 export const siteConfig = {
@@ -17,6 +40,7 @@ export const siteConfig = {
   origin: hasPublicOrigin
     ? configuredOrigin
     : "https://preview.steviecraig.example",
+  basePath,
   publicOrigin: hasPublicOrigin,
   whatsappNumber: configuredWhatsApp,
   whatsappReady: hasWhatsAppNumber,
@@ -34,6 +58,15 @@ export const siteConfig = {
 
 export type BookingKind = keyof typeof siteConfig.bookingMessages;
 
+export function siteAsset(path: `/${string}`) {
+  return `${siteConfig.basePath}${path}`;
+}
+
+export function siteUrl(path: `/${string}` = "/") {
+  const relativePath = path.replace(/^\/+/, "");
+  return new URL(relativePath, `${siteConfig.origin}/`).toString();
+}
+
 export function whatsappHref(kind: BookingKind = "general") {
   if (!siteConfig.whatsappReady) return "/contact#booking-pending";
 
@@ -44,7 +77,7 @@ export function whatsappHref(kind: BookingKind = "general") {
 type PageMetadataInput = {
   title: string;
   description: string;
-  path: string;
+  path: `/${string}`;
 };
 
 export function pageMetadata({
@@ -52,7 +85,8 @@ export function pageMetadata({
   description,
   path,
 }: PageMetadataInput): Metadata {
-  const absoluteUrl = new URL(path, `${siteConfig.origin}/`).toString();
+  const absoluteUrl = siteUrl(path);
+  const shareImage = siteUrl("/og.png");
 
   return {
     title,
@@ -68,13 +102,13 @@ export function pageMetadata({
       title,
       description,
       url: absoluteUrl,
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: siteConfig.name }],
+      images: [{ url: shareImage, width: 1200, height: 630, alt: siteConfig.name }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: [shareImage],
     },
   };
 }

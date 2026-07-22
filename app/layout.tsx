@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.origin),
+  metadataBase: new URL(`${siteConfig.origin}/`),
   title: {
     default: "Edinburgh Private Hire & Tours | Stevie Craig",
     template: "%s | Stevie Craig",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   applicationName: siteConfig.name,
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/apple-icon.png",
+    icon: siteUrl("/icon.png"),
+    shortcut: siteUrl("/icon.png"),
+    apple: siteUrl("/apple-icon.png"),
   },
 };
 

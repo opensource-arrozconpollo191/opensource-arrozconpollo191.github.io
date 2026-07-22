@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, siteUrl } from "@/lib/site";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!siteConfig.launchReady) return [];
 
   return siteConfig.routes.map((route) => ({
-    url: new URL(route, `${siteConfig.origin}/`).toString(),
+    url: siteUrl(route),
     lastModified: new Date(),
     changeFrequency: route === "/" ? "monthly" : "yearly",
     priority: route === "/" ? 1 : 0.8,

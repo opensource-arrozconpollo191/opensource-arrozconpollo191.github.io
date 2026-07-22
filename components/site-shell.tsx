@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   type BookingKind,
+  siteAsset,
   siteConfig,
   whatsappHref,
 } from "@/lib/site";
@@ -117,7 +118,7 @@ type PageHeroProps = {
   eyebrow: string;
   title: ReactNode;
   intro: string;
-  image: string;
+  image: `/${string}`;
   imageAlt: string;
   kind?: BookingKind;
   imagePosition?: string;
@@ -149,7 +150,7 @@ export function PageHero({
       </div>
       <div className="page-hero__image">
         <img
-          src={image}
+          src={siteAsset(image)}
           alt={imageAlt}
           width="1600"
           height="1100"

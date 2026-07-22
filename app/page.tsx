@@ -3,6 +3,7 @@ import Link from "next/link";
 import { WhatsAppLink } from "@/components/site-shell";
 import {
   pageMetadata,
+  siteAsset,
   siteConfig,
   structuredData,
 } from "@/lib/site";
@@ -70,7 +71,7 @@ export default function Home() {
       <section className="home-hero">
         <img
           className="home-hero__image"
-          src="/images/edinburgh-skyline.webp"
+          src={siteAsset("/images/edinburgh-skyline.webp")}
           alt="Edinburgh skyline with the Balmoral clock tower and Edinburgh Castle"
           width="2000"
           height="1328"
