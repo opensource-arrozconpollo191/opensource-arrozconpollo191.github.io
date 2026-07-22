@@ -848,7 +848,6 @@ summary {
 
   body {
     font-size: 15px;
-    padding-bottom: calc(4.35rem + env(safe-area-inset-bottom));
   }
 
   .site-header__inner {
@@ -987,6 +986,7 @@ summary {
   .site-footer__bottom {
     flex-direction: column;
     gap: 0.4rem;
+    padding-bottom: calc(5.55rem + env(safe-area-inset-bottom));
   }
 
   .mobile-booking-bar {
@@ -1005,6 +1005,22 @@ summary {
     border-top: 1px solid var(--line);
     box-shadow: 0 -0.5rem 1.5rem rgba(7, 23, 36, 0.12);
     backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(110%);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease,
+      visibility 0s linear 180ms;
+  }
+
+  .mobile-booking-bar.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
   }
 
   .mobile-booking-bar a {
@@ -1037,5 +1053,9 @@ summary {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .mobile-booking-bar {
+    transition: none;
   }
 }

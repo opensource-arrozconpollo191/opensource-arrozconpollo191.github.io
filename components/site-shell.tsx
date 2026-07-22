@@ -138,24 +138,6 @@ export function SiteFooter() {
   );
 }
 
-export function MobileBookingBar() {
-  return (
-    <nav className="mobile-booking-bar" aria-label="Quick booking">
-      <a className="mobile-booking-bar__call" href={telephoneHref()}>
-        Call Stevie
-      </a>
-      <a
-        className="mobile-booking-bar__whatsapp"
-        href={whatsappHref()}
-        target="_blank"
-        rel="noreferrer"
-      >
-        WhatsApp
-      </a>
-    </nav>
-  );
-}
-
 type PageHeroProps = {
   eyebrow: string;
   title: ReactNode;
@@ -183,7 +165,7 @@ export function PageHero({
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         <p className="page-hero__intro">{intro}</p>
-        <div className="page-hero__actions">
+        <div className="page-hero__actions" data-primary-booking-cta>
           <WhatsAppLink kind={kind} />
           {!siteConfig.whatsappReady && (
             <p className="pending-note pending-note--light">

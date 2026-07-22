@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import {
-  MobileBookingBar,
-  SiteFooter,
-  SiteHeader,
-} from "@/components/site-shell";
+import { MobileBookingBar } from "@/components/mobile-booking-bar";
+import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 

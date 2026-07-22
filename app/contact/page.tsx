@@ -52,7 +52,9 @@ export default function ContactPage() {
               ? "Use the button below to open a pre-filled message to me. Add your journey details before sending."
               : "The site is currently a private preview. My real WhatsApp number will be added here before the public launch."}
           </p>
-          <WhatsAppLink />
+          <div data-primary-booking-cta>
+            <WhatsAppLink />
+          </div>
           {!siteConfig.whatsappReady && (
             <p className="pending-note pending-note--light">
               <span aria-hidden="true" /> WhatsApp number pending

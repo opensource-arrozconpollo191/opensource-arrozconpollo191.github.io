@@ -97,7 +97,7 @@ export default function Home() {
             Local journeys, Edinburgh Airport transfers, longer-distance
             travel and bespoke tours. Message me on WhatsApp to book.
           </p>
-          <div className="hero-actions">
+          <div className="hero-actions" data-primary-booking-cta>
             <WhatsAppLink />
             <Link href="#services" className="text-link text-link--light">
               Explore services <span aria-hidden="true">↓</span>

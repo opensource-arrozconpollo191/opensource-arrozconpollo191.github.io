@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const routes = [
@@ -75,6 +76,8 @@ for (const [pathname, title, heading, bookingMessage] of routes) {
       ),
     );
     assert.match(html, /Message me/i);
+    assert.match(html, /data-primary-booking-cta/i);
+    assert.match(html, /mobile-booking-bar/i);
     assert.match(html, /href="tel:\+447528862843"/i);
     assert.match(html, /stevenjamescraig39@gmail\.com/i);
     assert.match(html, /href="https:\/\/wa\.me\/447528862843\?text=/i);
@@ -103,6 +106,21 @@ test("production robots allow crawling and advertise the sitemap", async () => {
     text,
     /Sitemap: https:\/\/shctransfers-toursedinburgh\.com\/sitemap\.xml/i,
   );
+});
+
+test("llms.txt describes the public services without unsupported claims", async () => {
+  const llms = await readFile(
+    new URL("../public/llms.txt", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(llms, /^# Stevie Craig Private Hires and Tours$/m);
+  assert.match(llms, /https:\/\/shctransfers-toursedinburgh\.com\/private-hire\//i);
+  assert.match(llms, /https:\/\/shctransfers-toursedinburgh\.com\/airport-transfers\//i);
+  assert.match(llms, /https:\/\/shctransfers-toursedinburgh\.com\/tours\//i);
+  assert.match(llms, /\+44 7528 862843/);
+  assert.match(llms, /stevenjamescraig39@gmail\.com/i);
+  assert.doesNotMatch(llms, /licensed|24\/7|guaranteed|fixed price/i);
 });
 
 test("sitemap contains every canonical public route", async () => {
