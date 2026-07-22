@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { MobileMenu } from "@/components/mobile-menu";
 import {
   type BookingKind,
   siteAsset,
@@ -68,19 +69,7 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <details className="mobile-menu">
-          <summary>
-            <span>Menu</span>
-            <span className="menu-lines" aria-hidden="true" />
-          </summary>
-          <nav aria-label="Mobile navigation">
-            {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </details>
+        <MobileMenu navigation={navigation} />
       </div>
     </header>
   );
